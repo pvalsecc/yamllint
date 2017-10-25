@@ -2119,3 +2119,10 @@ class ScalarIndentationTestCase(RuleTestCase):
         self.check('>\n'
                    '     multi\n'
                    '      line\n', conf, problem=(3, 7))
+
+    def test_ref_and_class(self):
+        conf = ('indentation: {spaces: consistent,\n'
+                '              indent-sequences: true,\n'
+                '              check-multi-line-strings: false}\n'
+                'document-start: disable\n')
+        self.check('scale: !toto &tutu\n  default: "Massstab"\n', conf)
